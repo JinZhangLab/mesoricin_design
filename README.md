@@ -1,27 +1,35 @@
-# Mesoricin Design
-This repository contains the code for designing and analyzing mesoricin, a short antifungal peptide sourced from Mesorhizobium sp., to enhance its antifungal activity and reduce toxicity. The design involves three computational steps using the Antifungal Index (AFI), a comprehensive metric that integrates machine learning-predicted minimum inhibitory concentrations (MICs) for multiple representative fungal species.
+# Mesoricin Design and Optimization
+This repository documents the computational design and optimization of mesoricin, a short antifungal peptide derived from *Mesorhizobium sp.*. It features a dual-domain structure: an α-helix domain responsible for membrane disruption and a β-sheet domain that targets intracellular energy production. The optimization process aims to enhance antifungal activity while minimizing cytotoxicity. The optimization involves three computational steps using the Antifungal Index (AFI), a comprehensive metric that integrates machine learning-predicted minimum inhibitory concentrations (MICs) for multiple representative fungal species.
 
 ## Project Overview
 
-### Purpose and Key Steps
-This project focuses on optimizing the antifungal peptide Mesoricin through three computational steps using the Antifungal Index (AFI):
+### Project Structure
 
-1. **Segmentation**: The initial peptide (Mesoricin1) is segmented into smaller peptides, and the variant with the lowest AFI is selected (Mesoricin2).
-2. **Single-Point Mutation**: Mesoricin2 is subjected to single-point mutations to identify the variant with the lowest AFI (Mesoricin3).
-3. **Global Optimization**: Positions in Mesoricin3 are optimized simultaneously to yield the final variant (Mesoricin4). The search space includes 19 positions, each having 19 possible amino acid substitutions, resulting in a total of 19^19 potential combinations.
+- **`mesoricin_design.py`**: The primary script orchestrating the mesoricin design process.
+- **`aa_scanning.py`**: A script dedicated to visualizing the impact of single amino acid substitutions on the predicted antifungal activity (AFI) of mesoricin2. This script performs an exhaustive in silico mutagenesis scan, generating a plot that highlights positions and amino acid substitutions yielding the most significant enhancements in predicted activity.
+- **`AF_Cluster/`**: This directory contains data related to the predicted structural distribution of all four mesoricin variants, along with dimensionality reduction visualizations.
 
-### Highlights
-- **AFI Framework**: AFI serves as a quantitative metric for guiding peptide optimization by considering antifungal activity while reducing hemolytic and cytotoxic effects. This comprehensive in silico assessment allows for the overall optimization of peptide antifungal activity[1,2].
-- **Potential Benefits**: The Antifungal Index (AFI) is developed using publicly available experimental data on antimicrobial peptides. Peptides designed using AFI may possess not only lower MICs but also additional benefits such as high fungicidal activity, potent microbial biofilm inhibition and eradication, stability under extreme conditions, low likelihood of inducing microbial resistance, and minimal hemolytic and cytotoxic effects.
-- **Cross-Activity**: Due to the correlation between antimicrobial activities, our extensive previous experiments have shown that AFI is also highly effective in screening antibacterial peptides[3,4,5].
+### Design Workflow
+
+The mesoricin optimization workflow encompasses three key stages:
+
+1.  **Segmentation:** Partitioning the initial mesoricin sequence (mesoricin1) into smaller peptides to identify the most active segment.
+2.  **Single-Point Mutation:** Implementing targeted single amino acid substitutions in the most active segment to further enhance activity.
+3.  **Global Optimization:** Performing global sequence optimization to achieve an optimal balance between antifungal efficacy and biosafety.
+
+### Key Features
+
+- **AFI Framework**: The Antifungal Index (AFI) serves as a quantitative, structure-activity based metric for guiding peptide optimization. By considering antifungal activity while reducing hemolytic and cytotoxic effects, AFI enables a comprehensive in silico assessment for the overall optimization of peptide antifungal activity [1,2].
+- **Potential Benefits**: The AFI is parameterized using publicly available experimental data on antimicrobial peptides. Peptides designed using AFI are expected to exhibit not only lower MICs but also additional desirable characteristics such as high fungicidal activity, potent microbial biofilm inhibition and eradication, stability under extreme conditions, a low propensity for inducing microbial resistance, and minimal hemolytic and cytotoxic effects.
+- **Cross-Activity**: Owing to the intrinsic correlation between antimicrobial activities, the AFI framework can also be effectively applied for screening antibacterial peptides.
 
 ### Usage Instructions
-To use this project:
+To utilize this project:
 
 1. **Set up the environment**:
     ```bash
     git clone https://www.github.com/JinZhangLab/mesoricin_design.git
-    cd mesoricin_design # Replace with the actual directory path
+    cd mesoricin_design
     conda env create -f environment.yml
     conda activate mesoricin_env
     ```
@@ -30,13 +38,27 @@ To use this project:
     python ./mesoricin_design.py
     ```
 
+The `mesoricin_design.py` script generates the following mesoricin variants:
+
+*   **Mesoricin1:** `RRYCRTYWRYGRLRRRCYRRRVWIWFRL` (Initial sequence)
+*   **Mesoricin2:** `YCRTYWRYGRLRRRCYRRR` (Segmented sequence)
+*   **Mesoricin3:** `YCRTYWRYGRLKRRCYRRR` (Single-point mutant)
+*   **Mesoricin4:** `YCRIYWRHGRLKRRCFRRG` (Globally optimized sequence)
+
+The single-point mutation results are as follows:
+
+![Single Point Mutation Analysis](scanning_profile.png)
+Exhaustive *in silico* mutagenesis of mesoricin2. The plot illustrates the impact of each mutation on the predicted antifungal activity (AFI) of mesoricin2. The x-axis denotes the position of the mutation, while the y-axis represents the relative AFI decrease ratio. Mutations resulting in a larger decrease in AFI indicate more critical positions and more promising substitutions for enhancing antifungal activity.
+
+The structural distribution of mesoricins is shown below:
+
+![Structural Distribution](AF_Cluster/figures/Figure.png)
+Predicted 3D structures of mesoricins. (A) t-distributed Stochastic Neighbor Embedding (t-SNE) plot visualizing the structural relationships among mesoricin 1–4. The plot was generated based on pairwise TM-scores calculated from structures of mesoricin 1–4, all generated using AF-Cluster. The cluster of mesoricin1 diverged from mesoricin 2-4, while mesoricin 2-4 exhibit tight clustering, suggesting a conserved structural motif. (B) Whole structures of Mesoricin 1-4 derived from AF-Cluster. Mesoricin 1 exhibits two distinct conformational states: one characterized by an α-helix and anti-parallel β-sheet architecture, and another featuring a random coil and β-sheet fold. The α-helix domain is highlighted in red, the β-sheet domain in yellow ribbons, and the random coil in green lines. The N- and C-termini are labeled to indicate structural orientation.
+
 ## References
 
 1. J. Zhang, et al. In Silico Design and Synthesis of Antifungal Peptides Guided by Quantitative Antifungal Activity. J. Chem. Inf. Model., 2024, 64 (10): 4277-4285. DOI: 10.1021/acs.jcim.4c00142.
 2. J. Zhang, et al. Large-Scale Screening of Antifungal Peptides Based on Quantitative Structure-Activity Relationship. ACS Med. Chem. Lett., 2022, 13(1): 99-104. DOI: 10.1021/acsmedchemlett.1c00556.
-3. Yang et al., Antimicrobial peptide DvAMP combats carbapenem-resistant Acinetobacter baumannii infection. International Journal of Antimicrobial Agents, 2024. DOI: 10.1016/j.ijantimicag.2024.107106
-4. Yang et al., Novel antimicrobial peptide DvAMP serves as a promising antifungal agent. Bioorganic Chemistry, 2023. DOI: 10.1016/j.bioorg.2023.106679
-5. Tian et al., The antibacterial activity and mechanism of a novel peptide MR-22 against multidrug-resistant Escherichia coli. Journal of Antimicrobial Chemotherapy, 2024. DOI: 10.3389/fcimb.2024.1334378
 
 ## License
 

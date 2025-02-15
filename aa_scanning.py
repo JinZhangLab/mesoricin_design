@@ -6,7 +6,6 @@ import itertools
 import re
 from antifungal.design import single_point_mutate, predict_MIC
 
-
 PROTEINOGENIC_AA = "ACDEFGHIKLMNPQRSTVWY"
 
 def vis_mutation(mutation_prediction, original_seq, original_AFI, save_fig_path="scanning_profile.png"):
@@ -45,11 +44,11 @@ def vis_mutation(mutation_prediction, original_seq, original_AFI, save_fig_path=
     activity_improvement = pd.DataFrame(columns=["original residue", "position", "mutant residue", "activity_improvement"])
 
     pattern = re.compile(r"mutate_(\w+)_(\d+)_(\w+)")  # Regex to extract mutation position and amino acid
-    for _ , row in mp.iterrows():
-        # Original amino acid, mutation postion, and mutated amino acid
+    for _, row in mp.iterrows():
+        # Original amino acid, mutation position, and mutated amino acid
         original_aa, pos, mut_aa = pattern.search(row["seq_name"]).groups()
         
-        # Since lower values indicate stronger antifungal activity, an decreased AFI indicates a improved antifugnal activity
+        # Since lower values indicate stronger antifungal activity, a decreased AFI indicates improved antifungal activity
         # Formula: ((original_index - mutated_index ) / original_index) * 100%
         AFI_decrease = original_AFI - float(row["AFI"])
         AFI_decrease = ((AFI_decrease) / (original_AFI + 1e-12)) * 100  # Prevent division by zero
@@ -63,12 +62,11 @@ def vis_mutation(mutation_prediction, original_seq, original_AFI, save_fig_path=
                         "position",
                         "mutant residue",
                         "activity_improvement"
-                        ]
+                    ]
                 )
             ),
             ignore_index=True
         )
-        
 
     # 2. Visualization
     if save_fig_path:
