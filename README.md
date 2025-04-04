@@ -65,8 +65,9 @@ By executing the `visualize_design_results.py` script, you can generate the foll
 
 ## References
 
-1. J. Zhang, et al. In Silico Design and Synthesis of Antifungal Peptides Guided by Quantitative Antifungal Activity. J. Chem. Inf. Model., 2024, 64 (10): 4277-4285. DOI: 10.1021/acs.jcim.4c00142.
-2. J. Zhang, et al. Large-Scale Screening of Antifungal Peptides Based on Quantitative Structure-Activity Relationship. ACS Med. Chem. Lett., 2022, 13(1): 99-104. DOI: 10.1021/acsmedchemlett.1c00556.
+1. H. Zhao, et al. Activity and Safety Optimization of Mesoricin: A Dual-Domain Antifungal Peptide from Mesorhizobium sp. J. Med. Chem., 2025. DOI: 10.1021/acs.jmedchem.4c02917.
+2. J. Zhang, et al. In Silico Design and Synthesis of Antifungal Peptides Guided by Quantitative Antifungal Activity. J. Chem. Inf. Model., 2024, 64 (10): 4277-4285. DOI: 10.1021/acs.jcim.4c00142.
+3. J. Zhang, et al. Large-Scale Screening of Antifungal Peptides Based on Quantitative Structure-Activity Relationship. ACS Med. Chem. Lett., 2022, 13(1): 99-104. DOI: 10.1021/acsmedchemlett.1c00556.
 
 ## License
 
