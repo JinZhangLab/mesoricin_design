@@ -65,13 +65,20 @@ By executing the `visualize_design_results.py` script, you can generate the foll
 
 ## References
 
-1. H. Zhao, et al. Activity and Safety Optimization of Mesoricin: A Dual-Domain Antifungal Peptide from Mesorhizobium sp. J. Med. Chem., 2025. DOI: 10.1021/acs.jmedchem.4c02917.
+1. H. Zhao, et al. Activity and Safety Optimization of Mesoricin: A Dual-Domain Antifungal Peptide from Mesorhizobium sp. J. Med. Chem., 2025, 68, 8, 8226–8243. DOI: 10.1021/acs.jmedchem.4c02917.
 2. J. Zhang, et al. In Silico Design and Synthesis of Antifungal Peptides Guided by Quantitative Antifungal Activity. J. Chem. Inf. Model., 2024, 64 (10): 4277-4285. DOI: 10.1021/acs.jcim.4c00142.
 3. J. Zhang, et al. Large-Scale Screening of Antifungal Peptides Based on Quantitative Structure-Activity Relationship. ACS Med. Chem. Lett., 2022, 13(1): 99-104. DOI: 10.1021/acsmedchemlett.1c00556.
 
 ## License
 
 This repository is distributed under the MIT License.
+
+
+## Stay Updated
+
+For the latest advancements in antimicrobial peptide design and applications, follow our WeChat Official Account!
+![AMPX Wechat Official Account](AMPX_Wechat.jpg)
+
 
 ## Contact
 
