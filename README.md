@@ -76,8 +76,9 @@ This repository is distributed under the MIT License.
 
 ## Stay Updated
 
-For the latest advancements in antimicrobial peptide design and applications, follow our WeChat Official Account!
-![AMPX Wechat Official Account](AMPX_Wechat.jpg)
+Follow our WeChat Official Account to stay updated on the latest in antimicrobial peptide design, including mesoricin advancements. Scan the QR code below to subscribe for regular research insights and project updates.
+
+<img src="AMPX_Wechat.jpg" alt="AMPX Wechat Official Account" width="400">
 
 
 ## Contact
